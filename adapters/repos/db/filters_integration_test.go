@@ -212,17 +212,17 @@ func testPrimitiveProps(repo *DB) func(t *testing.T) {
 				filter:      buildFilter("description", "engine", eq, dtText),
 				expectedIDs: []strfmt.UUID{carPoloID},
 			},
-			// {
-			// 	name: "within 600km of San Francisco",
-			// 	filter: buildFilter("parkedAt", filters.GeoRange{
-			// 		GeoCoordinates: &models.GeoCoordinates{
-			// 			Latitude:  ptFloat32(37.733795),
-			// 			Longitude: ptFloat32(-122.446747),
-			// 		},
-			// 		Distance: 600000,
-			// 	}, wgr, dtGeoCoordinates),
-			// 	expectedIDs: []strfmt.UUID{carSprinterID},
-			// },
+			{
+				name: "within 600km of San Francisco",
+				filter: buildFilter("parkedAt", filters.GeoRange{
+					GeoCoordinates: &models.GeoCoordinates{
+						Latitude:  ptFloat32(37.733795),
+						Longitude: ptFloat32(-122.446747),
+					},
+					Distance: 600000,
+				}, wgr, dtGeoCoordinates),
+				expectedIDs: []strfmt.UUID{carSprinterID},
+			},
 
 			// TODO: gh-1150 support uuid filter
 			// {
